@@ -32,9 +32,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import {useQuery} from "@tanstack/react-query";
-import {fetchUsers} from "../../query/fetchUsers.ts";
-import {useAuth} from "@/context/AuthProvider.tsx";
+
 const data: Payment[] = [
     {
         id: "m5gr84i9",
@@ -190,11 +188,10 @@ export default function ManageUsers() {
 
 
 
-    const users=useQuery(fetchUsers())
 
     return (
         <div className="w-full">
-            {JSON.stringify(users.data)}
+
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Filter emails..."
