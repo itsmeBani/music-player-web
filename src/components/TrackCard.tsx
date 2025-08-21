@@ -57,8 +57,8 @@ function TrackCard<TData extends {uri :string}>({item, onPlay, songName, artist,
                     <img src={albumImage} className={" transform transition-transform  hover:scale-130 mb-2  "}/>
 
                 </div>
-                <p className="truncate w-30 pt-2 text-[16px] PlusJakartaSans-SemiBold">{songName}</p>
-                <p className={"truncate w-30 text-[14px] text-white/70 PlusJakartaSans-Regular"}>Song• {artist}</p>
+                <p className="truncate w-30 pt-2 text-sm lg:text-[16px] PlusJakartaSans-SemiBold">{songName}</p>
+                <p className={"truncate w-30  text-xs lg:text-[14px] text-white/70 PlusJakartaSans-Regular"}>Song• {artist}</p>
 
             </div>
 

@@ -16,10 +16,10 @@ function Play() {
     const {data ,isPending} = useQuery(SearchTracks(debouncedSearchTerm))
 
     return (
-        <section className=" w-full flex flex-col gap-10 pt-2 h-full ">
+        <section className=" w-full flex flex-col gap-4 lg:gap-10 pt-2 h-full ">
             <div className={"  flex place-items-center justify-center "}>
 
-            <div className={"flex border-[0.3px] min-w-130 px-2 rounded-md max-w-130  border-white place-items-center"}>
+            <div className={"flex border-[0.3px] w-full lg:min-w-130 px-2 rounded-md max-w-130  border-white place-items-center"}>
                 <Search/>
                 <Input onChange={(e)=>setSearchTrack(e.target.value)}  placeholder={"What do you want to listen to?"}
                         className={"PlusJakartaSans-Regular border-none w-full  focus-visible:focus-visible:ring-transparent border-white  border-[0.2px]"}/>
@@ -27,7 +27,7 @@ function Play() {
             </div>
                  </div>
             {isPending && <div className={"w-full flex justify-center"}><Loader className={"animate-spin"}/></div>}
-            <div className={"gap-5 grid pb-50 grid-cols-6 w-full"}>
+            <div className={"gap-2 lg:gap-5 grid pb-50 grid-cols-2 lg:grid-cols-6 w-full"}>
                 {data?.tracks?.items.map((item: SpotifyApi.TrackObjectFull) => {
                         return (
                             <TrackCard  item={item}

@@ -94,7 +94,7 @@ function MusicPlayer() {
 
 
     return (
-        <div className="absolute  bg-[#006239] p-2 px-3 w-full left-0 bottom-0 border-[#00e673] border-t-1 rounded-t-lg">
+        <div className="absolute  bg-[#006239] py-2 px-2 lg:p-2 lg:px-3 w-full left-0 bottom-0 border-[#00e673] border-t-1 rounded-t-lg">
             <div className="flex gap-2 justify-between">
 
                 <div className="flex w-full gap-3 place-items-center">
@@ -109,7 +109,7 @@ function MusicPlayer() {
                     </div>
 
                     <div>
-                        <h1 className="leading-5 text-nowrap overflow-hidden max-w-[200px] text-md PlusJakartaSans-Bold">
+                        <h1 className="lg:leading-5 leading-3 text-nowrap overflow-hidden max-w-[120px] lg:max-w-[200px] truncate text-sm lg:text-md PlusJakartaSans-Bold">
                             {currentTrack?.name}
                         </h1>
                         <p className="text-[13px] PlusJakartaSans-Regular">
@@ -121,7 +121,7 @@ function MusicPlayer() {
 
                 <div className="flex w-full pt-2">
                     <div className="w-full flex gap-2 flex-col ">
-                        <div className="flex gap-5 justify-center h-full">
+                        <div className="flex gap-2 lg:gap-5 justify-center h-full">
                             <button onClick={previousTrack}>
                                 <SkipBack strokeWidth={4} />
                             </button>
@@ -158,7 +158,7 @@ function MusicPlayer() {
                     </div>
                 </div>
 
-                <div className={"w-full flex justify-end place-items-center"}>
+                <div className={"w-full hidden lg:flex justify-end place-items-center"}>
                     {activeDevice?.device &&
                         <div className={"h-full place-items-center gap-3 justify-center flex   px-4 rounded-md"}>
                             <Laptop2 color="white"/>
