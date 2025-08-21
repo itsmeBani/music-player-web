@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input.tsx";
 import { Link } from "react-router";
 import {useAuth} from "@/context/AuthProvider.tsx";
 import {Loader} from "lucide-react";
+import logo from "@/assets/LOGOAPP.png";
 
 function Register() {
 
@@ -23,13 +24,18 @@ function Register() {
 
     return (
         <section className={"h-[100dvh] w-full bg-[#191919]"}>
-            <div className={"grid h-full grid-cols-2"}>
-                <div className="p-30 flex gap-4 flex-col justify-center">
-                    <div className="w-full flex flex-col place-items-center">
-                        <h1 className={"text-4xl text-white PlusJakartaSans-Bold"}>
+            <div className={"grid h-full lg:grid-cols-2"}>
+                <div className="p-5 lg:p-30 flex gap-4 flex-col justify-center">
+                    <div className="w-full flex flex-col  place-items-center">
+
+                        <div className="pb-5">
+                            <img alt="" className="h-10"
+                                 src={logo}/>
+                        </div>
+                        <h1 className={"text-3xl lg:text-4xl text-white PlusJakartaSans-Bold"}>
                             Create Account
                         </h1>
-                        <p className={"text-lg text-center text-white PlusJakartaSans-Regular"}>
+                        <p className={"text-md lg:text-lg text-center text-white/80 PlusJakartaSans-Regular"}>
                             Sign up to listen to your favorite tracks anytime, anywhere.
                         </p>
                     </div>
@@ -138,7 +144,7 @@ function Register() {
                         </form>
                     </Form>
                     <div>
-                        <p className={"text-center text-white PlusJakartaSans-Regular"}>
+                        <p className={"text-center text-sm lg:text-md text-white PlusJakartaSans-Regular"}>
                             Already have an account?{" "}
                             <Link to={"/login"}>
                 <span className="text-[#0e6] PlusJakartaSans-SemiBold underline">
@@ -148,7 +154,7 @@ function Register() {
                         </p>
                     </div>
                 </div>
-                <div className={"h-full w-full flex bg-pink-200"}>
+                <div className={"h-full w-full hidden lg:flex bg-pink-200"}>
                     <img
                         className={"h-full flex object-cover"}
                         src={"https://ui.shadcn.com/placeholder.svg"}

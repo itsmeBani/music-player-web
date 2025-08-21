@@ -24,14 +24,14 @@ function Home() {
 
                 <div className={"select-none flex gap-2 place-items-center"}>
                     <div className="p-2 bg-[#00311D] rounded-md"><Award color={"#85e0ba"}/></div>
-                    <h1 className="PlusJakartaSans-Bold text-2xl">My top Artists</h1>
+                    <h1 className="PlusJakartaSans-Bold text-lg lg:text-2xl">My top Artists</h1>
                 </div>
 
             </div>
             <Carousel className="w-full ">
                 <CarouselContent className="-ml-1">
                     {data?.items?.map((item:SpotifyApi.ArtistObjectFull, index: number) => (
-                        <CarouselItem key={index} className="pl-1 md:basis-2 lg:basis-1/4">
+                        <CarouselItem key={index} className="pl-1 basis-4/6 md:basis-2 lg:basis-1/4">
                             <div className="p-1">
                                 <Card className={"group select-none py-0 rounded-lg overflow-hidden"}>
 
@@ -76,7 +76,7 @@ function Home() {
 
                 <div className={" select-none flex gap-2 place-items-center"}>
                     <div className="p-2 bg-[#00311D] rounded-md"><Clock color={"#85e0ba"}/></div>
-                    <h1 className="PlusJakartaSans-Bold text-2xl">Recently Played</h1>
+                    <h1 className="PlusJakartaSans-Bold text-lg lg:text-2xl">Recently Played</h1>
                 </div>
                 <RecentlyPlayed/>
             </div>

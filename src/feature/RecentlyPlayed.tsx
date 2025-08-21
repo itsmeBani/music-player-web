@@ -1,7 +1,7 @@
 import {fetchRecentlyPlayedTrack} from "../../query/fetchTracks.ts";
 import {useQuery} from "@tanstack/react-query";
 import TrackCard from "@/components/TrackCard.tsx";
-import {Carousel, CarouselContent} from "@/components/ui/carousel.tsx";
+import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel.tsx";
 import {usePlayBack} from "@/hooks/usePlayBack.ts";
 
 
@@ -15,9 +15,10 @@ function RecentlyPlayed() {
                 <CarouselContent className="ml-1 flex gap-4">
                     {data?.items?.map((item: {track :SpotifyApi.TrackObjectFull,uri:string}, index: number) => {
 
+                            return (
+                                <CarouselItem key={index} className="pl-1 basis-2/7 md:basis-2 lg:basis-1/6">
 
-                        return (
-                            <TrackCard key={index}
+                                <TrackCard key={index}
                                        onPlay={() =>
                                            Play.mutate({
                                            contextUri: item?.track.uri,
@@ -29,8 +30,11 @@ function RecentlyPlayed() {
                                        albumImage={item?.track.album?.images?.[0].url} isDisplayMenu={false}
                                        onMenuCLick={() => {
                                        }} item={item}/>
+                                </CarouselItem>
                         )
-                    })}
+                    }
+
+                    )}
                 </CarouselContent>
 
             </Carousel>

@@ -6,6 +6,7 @@ import {Input} from "@/components/ui/input.tsx";
 
 import {Link} from "react-router";
 import {Loader} from "lucide-react";
+import logo from "@/assets/LOGOAPP.png";
 function Login() {
     const {LoginWithEmailPassword,LoginForm,loadingLogin}=useAuth()
 
@@ -13,13 +14,17 @@ function Login() {
         <section className={"h-[100dvh] w-full bg-[#191919]"}>
 
 
-            <div className={"grid h-full grid-cols-2"}>
+            <div className={"grid h-full lg:grid-cols-2"}>
 
-                <div className="p-30 flex gap-4 flex-col justify-center">
+                <div className="p-5 lg:p-30 flex gap-4 flex-col justify-center">
 
                     <div className="w-full flex flex-col place-items-center">
-                        <h1 className={"text-4xl text-white leading-13 PlusJakartaSans-Bold"}>Welcome Back</h1>
-                        <p className={"text-lg text-white PlusJakartaSans-Regular"}>Log in to continue enjoying your favorite tracks</p>
+                        <div className="pb-5">
+                            <img alt="" className="h-10"
+                                 src={logo}/>
+                        </div>
+                        <h1 className={"text-3xl lg:text-4xl text-white lg:leading-13 PlusJakartaSans-Bold"}>Welcome Back</h1>
+                        <p className={"text-md text-center lg:px-0 px-4 lg:text-lg text-white PlusJakartaSans-Regular"}>Log in to continue enjoying your favorite tracks</p>
                     </div>
                     <Form {...LoginForm}>
                         <form onSubmit={LoginForm.handleSubmit(LoginWithEmailPassword)} className="flex flex-col gap-4">
@@ -61,7 +66,7 @@ function Login() {
                         <p className={"text-center text-white PlusJakartaSans-Regular"}>Don't Have an Account? <Link to={"/register"}><span className={"text-[#0e6] PlusJakartaSans-SemiBold underline"}>Register now</span></Link></p>
                     </div>
                 </div>
-                <div className={"h-full w-full flex bg-pink-200"}>
+                <div className={"hidden lg:flex h-full w-full "}>
                     <img className={"h-full flex object-cover"}  src={"https://ui.shadcn.com/placeholder.svg"}/>
                 </div>
             </div>

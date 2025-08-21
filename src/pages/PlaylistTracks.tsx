@@ -27,22 +27,22 @@ function PlaylistTracks() {
     if (!PlaylistID) return  <Navigate to={"/library"} replace={true}/>
 
     return (
-        <section className={"flex flex-col gap-6"}>
+        <section className={"flex flex-col gap-3 lg:gap-6"}>
+            <Link to={"/library"}>
+                <ChevronLeft strokeWidth={4} size={30}/>
+            </Link>
+            <div className={"  pb-2 flex place-items-center justify-center "}>
 
-            <div className={"  flex place-items-center justify-center "}>
-
-                <div className={"flex border-[0.3px] min-w-130 px-2 rounded-md max-w-130  border-white place-items-center"}>
+                <div className={"flex border-[0.3px] w-full lg:min-w-130 px-2 rounded-md max-w-130  border-white place-items-center"}>
                     <Search/>
                     <Input onChange={(e)=>setSearch(e.target.value)}  placeholder={"What do you want to listen to?"}
                            className={"PlusJakartaSans-Regular border-none w-full  focus-visible:focus-visible:ring-transparent border-white  border-[0.2px]"}/>
 
                 </div>
             </div>
-            <Link to={"/library"}>
-                <ChevronLeft strokeWidth={4} size={30}/>
-            </Link>
+
             {playlistTrack?.isPending && <div className={"w-full flex justify-center"}><Loader className={"animate-spin"}/></div>}
-           <div className={"grid grid-cols-6 pb-100  gap-4"}>
+           <div className={"grid grid-cols-2 lg:grid-cols-6 pb-100  gap-2 lg:gap-4"}>
                {filteredTracks?.map((item: {track :SpotifyApi.TrackObjectFull, uri : string},index:number)=>{
                    return <TrackCard key={index}
 

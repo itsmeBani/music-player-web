@@ -112,7 +112,7 @@ function MusicPlayer() {
                         <h1 className="lg:leading-5 leading-3 text-nowrap overflow-hidden max-w-[120px] lg:max-w-[200px] truncate text-sm lg:text-md PlusJakartaSans-Bold">
                             {currentTrack?.name}
                         </h1>
-                        <p className="text-[13px] PlusJakartaSans-Regular">
+                        <p className="text-[13px] PlusJakartaSans-Regular text-nowrap overflow-hidden max-w-[120px]  truncate">
                             {currentTrack?.artists?.map((a) => a.name).join(", ")}
                         </p>
                     </div>

@@ -62,11 +62,11 @@ function TrackCard<TData extends {uri :string}>({item, onPlay, songName, artist,
 
             </div>
 
-            <div className={"opacity-0 group-hover:opacity-100 absolute -bottom-0 -right-2"}>
+            <div className={"lg:opacity-0 lg:group-hover:opacity-100 absolute -bottom-0 -right-1 lg:-right-2"}>
                 {isDisplayMenu &&
                     <DropdownMenu >
                         <DropdownMenuTrigger className={" "}> <EllipsisVertical/></DropdownMenuTrigger>
-                        <DropdownMenuContent className={"min-w-80 overflow-hidden"}>
+                        <DropdownMenuContent className={"lg:min-w-80 overflow-hidden"}>
                             <DropdownMenuLabel className={"flex place-items-center w-full justify-between gap-3"}>
                                <div className={"flex gap-2"}>
                                    <div
@@ -102,7 +102,7 @@ function TrackCard<TData extends {uri :string}>({item, onPlay, songName, artist,
 
 
                                 <ScrollArea className="w-full h-[240px] pb-3 px-3 rounded-md ">
-                                    <div className={"grid grid-cols-4 gap-2 "}>
+                                    <div className={"grid grid-cols-3 lg:grid-cols-4 gap-2 "}>
                                         {playlistData?.items?.map((item: PlaylistBaseObject, index: number) => {
                                                 return (
                                                     <div  key={index} onClick={()=>setSelectedPlaylistId(item?.id)}>
