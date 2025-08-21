@@ -1,0 +1,162 @@
+
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+
+
+import { Input } from "@/components/ui/input.tsx";
+
+import { Link } from "react-router";
+import {useAuth} from "@/context/AuthProvider.tsx";
+import {Loader} from "lucide-react";
+
+function Register() {
+
+  const {RegisterForm,RegisterUser,loadingRegister}=useAuth()
+
+
+
+    return (
+        <section className={"h-[100dvh] w-full bg-[#191919]"}>
+            <div className={"grid h-full grid-cols-2"}>
+                <div className="p-30 flex gap-4 flex-col justify-center">
+                    <div className="w-full flex flex-col place-items-center">
+                        <h1 className={"text-4xl text-white PlusJakartaSans-Bold"}>
+                            Create Account
+                        </h1>
+                        <p className={"text-lg text-center text-white PlusJakartaSans-Regular"}>
+                            Sign up to listen to your favorite tracks anytime, anywhere.
+                        </p>
+                    </div>
+                    <Form {...RegisterForm}>
+                        <form
+                            onSubmit={RegisterForm.handleSubmit(RegisterUser)}
+                            className="flex flex-col gap-4"
+                        >
+                            {/* Username */}
+                            <FormField
+                                control={RegisterForm.control}
+                                name="username"
+                                render={({ field }) => (
+                                    <FormItem className={"w-full"}>
+                                        <FormLabel className="PlusJakartaSans-Regular text-white/80">
+                                            Username
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className={
+                                                    "text-white PlusJakartaSans-Regular"
+                                                }
+                                                placeholder="Your username"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className={"text-[#df6d6d]"} />
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* Email */}
+                            <FormField
+                                control={RegisterForm.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem className={"w-full"}>
+                                        <FormLabel className="PlusJakartaSans-Regular text-white/80">
+                                            Email
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className={
+                                                    "text-white PlusJakartaSans-Regular"
+                                                }
+                                                placeholder="you@example.com"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className={"text-[#df6d6d]"} />
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* Password */}
+                            <FormField
+                                control={RegisterForm.control}
+                                name="password"
+                                render={({ field }) => (
+                                    <FormItem className={"w-full"}>
+                                        <FormLabel className="PlusJakartaSans-Regular text-white/80">
+                                            Password
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="password"
+                                                className={
+                                                    "text-white PlusJakartaSans-Regular"
+                                                }
+                                                placeholder="Enter password"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className={"text-[#df6d6d]"} />
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* Confirm Password */}
+                            <FormField
+                                control={RegisterForm.control}
+                                name="confirmPassword"
+                                render={({ field }) => (
+                                    <FormItem className={"w-full"}>
+                                        <FormLabel className="PlusJakartaSans-Regular text-white/80">
+                                            Confirm Password
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="password"
+                                                className={
+                                                    "text-white PlusJakartaSans-Regular"
+                                                }
+                                                placeholder="Confirm password"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className={"text-[#df6d6d]"} />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <button disabled={loadingRegister} className={"bg-[#1DB954] h-[30] place-items-center py-3 rounded-full PlusJakartaSans-Bold hover:bg-unset text-white text-shadow-lg"} type="submit">
+                                {loadingRegister ? <Loader  className={"animate-spin"} color={"white"}/> :"Register"}
+                            </button>
+                        </form>
+                    </Form>
+                    <div>
+                        <p className={"text-center text-white PlusJakartaSans-Regular"}>
+                            Already have an account?{" "}
+                            <Link to={"/login"}>
+                <span className="text-[#0e6] PlusJakartaSans-SemiBold underline">
+                  Log in
+                </span>
+                            </Link>
+                        </p>
+                    </div>
+                </div>
+                <div className={"h-full w-full flex bg-pink-200"}>
+                    <img
+                        className={"h-full flex object-cover"}
+                        src={"https://ui.shadcn.com/placeholder.svg"}
+                    />
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default Register;
