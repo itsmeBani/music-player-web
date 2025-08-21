@@ -63,11 +63,11 @@ function Login() {
                         </form>
                     </Form>
                     <div>
-                        <p className={"text-center text-white PlusJakartaSans-Regular"}>Don't Have an Account? <Link to={"/register"}><span className={"text-[#0e6] PlusJakartaSans-SemiBold underline"}>Register now</span></Link></p>
+                        <p className={"text-center text-sm text-white PlusJakartaSans-Regular"}>Don't Have an Account? <Link to={"/register"}><span className={"text-[#0e6] PlusJakartaSans-SemiBold underline"}>Register now</span></Link></p>
                     </div>
                 </div>
-                <div className={"hidden lg:flex h-full w-full "}>
-                    <img className={"h-full flex object-cover"}  src={"https://ui.shadcn.com/placeholder.svg"}/>
+                <div className={"hidden lg:flex h-full w-full bg-[#191919]"}>
+
                 </div>
             </div>
         </section>

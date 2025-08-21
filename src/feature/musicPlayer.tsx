@@ -7,10 +7,8 @@ import {
     SkipBack,
     SkipForward,
     PauseIcon,
-    PlayIcon, Laptop2,
+    PlayIcon,Volume2, VolumeX, Volume1,
 } from "lucide-react";
-import {fetchCurrentActiveDevice} from "../../query/fetchDevices.ts";
-import {useQuery} from "@tanstack/react-query";
 
 function MusicPlayer() {
     const { token } = useAuth();
@@ -20,7 +18,8 @@ function MusicPlayer() {
     const [duration, setDuration] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [isSeeking, setIsSeeking] = useState(false);
-    const { data:activeDevice } = useQuery(fetchCurrentActiveDevice());
+
+    const [volume, setVolume] = useState(100);
 
     useEffect(() => {
         if (!player) return;
@@ -44,6 +43,17 @@ function MusicPlayer() {
             player.removeListener("player_state_changed", listener);
         };
     }, [player, isSeeking]);
+
+    useEffect(() => {
+        if (player) {
+            player.setVolume(volume / 100).catch(err => console.error(err));
+        }
+    }, [volume, player]);
+
+    const handleVolumeChange = (value: number[]) => {
+        const newVolume = value[0];
+        setVolume(newVolume);
+    };
 
     const progressPercent =
         duration > 0 ? Math.min((position / duration) * 100, 100) : 0;
@@ -158,16 +168,19 @@ function MusicPlayer() {
                     </div>
                 </div>
 
-                <div className={"w-full hidden lg:flex justify-end place-items-center"}>
-                    {activeDevice?.device &&
-                        <div className={"h-full place-items-center gap-3 justify-center flex   px-4 rounded-md"}>
-                            <Laptop2 color="white"/>
-                            <h1 className="PlusJakartaSans-SemiBold text-white]">
-                                { activeDevice?.device?.name}
-                                <p className={"PlusJakartaSans-Regular leading-3 opacity-90 text-xs"}>Currently playing device</p>
-                            </h1>
-                        </div>
-                    }
+                <div className={"w-full hidden gap-2 pr-3 lg:flex justify-end place-items-center"}>
+
+
+                    {volume === 0 ? <VolumeX size={30}/>
+                        : volume <= 70 ? <Volume1 size={30}/>
+                            : <Volume2 size={30}/> }
+                    <Slider
+                        className="w-[170px]"
+                        value={[volume]}
+                        max={100}
+                        step={1}
+                        onValueChange={handleVolumeChange}
+                    /> <p className={"PlusJakartaSans-Bold text-xs"}>{volume}%</p>
                 </div>
             </div>
         </div>

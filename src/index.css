@@ -100,7 +100,7 @@
 
   /* Borders / Inputs / Ring */
   --border: oklch(0.27 0 0);
-  --input: oklch(0.27 0 0);
+  --input: oklch(0.689 0 89.876);
   --ring: oklch(0.74 0.17 142); /* green ring */
 
   /* Charts */

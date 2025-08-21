@@ -6,7 +6,9 @@ import Devices from "@/feature/Devices.tsx";
 import MusicPlayer from "@/feature/musicPlayer.tsx";
 import logo from "../assets/LOGOAPP.png"
 
+
 export const RootLayout = () => {
+
     return (
         <SidebarProvider>
             <AppSidebar/>
@@ -18,7 +20,11 @@ export const RootLayout = () => {
                         <h1 className={"flex lg:hidden gap-2 place-items-center PlusJakartaSans-Bold"}><img className="h-5"
                                                                                                   src={logo}/>Music
                             Player</h1>
+
+
                         <Devices/>
+
+
                     </div>
                 </header>
                 <div className="flex overflow-auto   flex-col gap-4 p-4 pt-0">

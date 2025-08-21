@@ -39,7 +39,7 @@ export function NavMain({
     return (
         <SidebarGroup>
             <div className="rounded-md flex gap-4 place-items-center p-2 pb-4">
-                <img alt="" className="h-10"
+                <img alt="" className="w-10 aspect-square"
                      src={logo}/>
             <h1 className={"font-extrabold"}>Music Player</h1>
             </div>
@@ -86,7 +86,7 @@ export function NavMain({
                 ))}
 
 
-                {currentUser?.roles[0].toLowerCase() === "user"
+                {currentUser?.roles[0].toLowerCase() === "admin"
                     &&
                     <SidebarMenuItem>
                         <Link to={"/users"}>

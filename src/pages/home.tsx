@@ -18,7 +18,7 @@ function Home() {
     const {data} = useQuery(TopArtistsQuery());
     console.log(data)
     return (
-        <section className="flex flex-col gap-5 ">
+        <section className="flex  pb-30 flex-col gap-5 ">
 
             <div>
 
@@ -31,29 +31,29 @@ function Home() {
             <Carousel className="w-full ">
                 <CarouselContent className="-ml-1">
                     {data?.items?.map((item:SpotifyApi.ArtistObjectFull, index: number) => (
-                        <CarouselItem key={index} className="pl-1 basis-4/6 md:basis-2 lg:basis-1/4">
+                        <CarouselItem key={index} className="pl-1 ">
                             <div className="p-1">
-                                <Card className={"group select-none py-0 rounded-lg overflow-hidden"}>
+                                <Card className={"group  select-none py-0 rounded-lg overflow-hidden"}>
 
                                     <Link to={`top-artist/${item?.id}`}>
                                         <div
-                                            className="h-full z-1  flex-1 relative  aspect-square items-center justify-center ">
-                                            <img alt={""} className={"-z-1   object-cover transform transition-transform  group-hover:scale-110"}
+                                            className=" z-1   flex-1 w-45 h-50 lg:w-60 lg:h-70 relative  aspect-square items-center justify-center ">
+                                            <img alt={""} className={"-z-1   object-cover w-full h-full transform transition-transform  group-hover:scale-110"}
                                                  src={item?.images?.[0]?.url}/>
 
 
                                             <div className={"select-none absolute left-4 w-full  bottom-4 z-1"}>
-                                                <h1 className="text-xl PlusJakartaSans-Bold">{item?.name}</h1>
+                                                <h1 className="lg:text-xl PlusJakartaSans-Bold">{item?.name}</h1>
 
 
                                                 <div className="flex place-items-center justify-between w-full">
                                                     <div className={"w-full"}>
-                                                        <h1 className="text-lg PlusJakartaSans-Bold">4.3M</h1>
-                                                        <p className="PlusJakartaSans-Regular ">followers</p>
+                                                        <h1 className=" text-sm lg:text-lg PlusJakartaSans-Bold">4.3M</h1>
+                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md  ">followers</p>
                                                     </div>
                                                     <div className={"w-full"}>
-                                                        <h1 className="text-lg PlusJakartaSans-Bold">67</h1>
-                                                        <p className="PlusJakartaSans-Regular ">Popularity</p>
+                                                        <h1 className="text-sm lg:text-lg PlusJakartaSans-Bold">67</h1>
+                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md ">Popularity</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,7 +74,7 @@ function Home() {
             </Carousel>
             <div>
 
-                <div className={" select-none flex gap-2 place-items-center"}>
+                <div className={"   select-none flex gap-2 place-items-center"}>
                     <div className="p-2 bg-[#00311D] rounded-md"><Clock color={"#85e0ba"}/></div>
                     <h1 className="PlusJakartaSans-Bold text-lg lg:text-2xl">Recently Played</h1>
                 </div>

@@ -127,7 +127,7 @@ function Register() {
                                             <Input
                                                 type="password"
                                                 className={
-                                                    "text-white PlusJakartaSans-Regular"
+                                                    "text-white PlusJakartaSans-Regular "
                                                 }
                                                 placeholder="Confirm password"
                                                 {...field}
@@ -138,7 +138,7 @@ function Register() {
                                 )}
                             />
 
-                            <button disabled={loadingRegister} className={"bg-[#1DB954] h-[30] place-items-center py-3 rounded-full PlusJakartaSans-Bold hover:bg-unset text-white text-shadow-lg"} type="submit">
+                            <button disabled={loadingRegister} className={"bg-[#1DB954]  place-items-center py-3 rounded-full PlusJakartaSans-Bold hover:bg-unset text-white text-shadow-lg"} type="submit">
                                 {loadingRegister ? <Loader  className={"animate-spin"} color={"white"}/> :"Register"}
                             </button>
                         </form>
@@ -154,11 +154,8 @@ function Register() {
                         </p>
                     </div>
                 </div>
-                <div className={"h-full w-full hidden lg:flex bg-pink-200"}>
-                    <img
-                        className={"h-full flex object-cover"}
-                        src={"https://ui.shadcn.com/placeholder.svg"}
-                    />
+                <div className={"h-full w-full hidden lg:flex "}>
+
                 </div>
             </div>
         </section>
