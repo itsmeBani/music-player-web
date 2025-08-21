@@ -18,7 +18,7 @@ function ArtistAlbum() {
             <Link to={`/top-artist/${artistID}`}>
                 <ChevronLeft strokeWidth={4} size={30}/>
             </Link>
-            <div className={"gap-5 grid pb-50 grid-cols-6 w-full"}>
+            <div className={"gap-5 grid pb-50 grid-cols-2 lg:grid-cols-6 w-full"}>
                 {data?.tracks.items?.map((item: SpotifyApi.AlbumObjectSimplified, index: number) => {
                     return (
                         <TrackCard

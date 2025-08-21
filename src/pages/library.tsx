@@ -48,11 +48,11 @@ function Library() {
                 </div>
 
 
-                <Drawer  direction={"right"}>
+                <Drawer   direction={"right"} >
                     <DrawerTrigger>
                         <div className={"bg-white lg:py-2 px-2  pr-3 py-1 PlusJakartaSans-Bold text-[#191919] lg:px-5 rounded-full text-xs lg:text-sm flex place-items-center"}><PlusIcon strokeWidth={2.5} className={"mr-1"}/>Create Playlist</div>
                     </DrawerTrigger>
-                    <DrawerContent className={"bg-[#121212] flex h-full pt-10"}>
+                    <DrawerContent className={"bg-[#121212] w-[100px]  flex h-full pt-10"}>
                          <CreatePlaylist onSuccess={onSuccess}/>
 
                         <DrawerFooter>
