@@ -57,28 +57,30 @@ export default function TopArtist() {
                 </Link>
 
             </div>
-            <div className={"flex gap-4 lg:flex-row place-items-start flex-col"}>
-                <div className="flex flex-row lg:flex-col lg:gap-0 gap-3 lg:aspect-square lg:w-300">
+            <div className={"flex lg:gap-4 lg:flex-row place-items-start flex-col"}>
+                <div className="flex flex-row lg:flex-col lg:gap-0 gap-3  lg:w-83">
                     <img className={"aspect-square w-35 lg:w-auto rounded-lg object-cover "}
                          src={currentArtist?.data?.images?.[0].url} alt={""}/>
 
-                    <div className="flex flex-col  gap-2  ">
-                        <h1 className="font-extrabold text-lg lg:text-2xl pt-5">{currentArtist?.data?.name}</h1>
-                     <div className="flex flex-row lg:gap-10 gap-4">
-                         <div>
 
-                             <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {formatFollowers(currentArtist?.data?.followers?.total)}</h1>
-                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">followers</p>
-                         </div>
-                         <div>
-                             <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {currentArtist?.data?.popularity.toLocaleString()}</h1>
-                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">Popularity</p>
-                         </div>
-                     </div>
-                    </div>
                 </div>
-                <div className="flex flex-col lg:h-full">
-                    <div className="relative   lg:w-130 lg:min-h-[200px] bg-white rounded-lg overflow-hidden border">
+                <div className="flex flex-col gap-4 lg:h-full">
+                    <div className="flex flex-col  gap-2  ">
+                        <h1 className="font-extrabold text-lg lg:text-2xl lg:pt-5">{currentArtist?.data?.name}</h1>
+                        <div className="flex flex-row lg:gap-10 gap-4">
+                            <div>
+
+                                <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {formatFollowers(currentArtist?.data?.followers?.total)}</h1>
+                                <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">followers</p>
+                            </div>
+                            <div>
+                                <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {currentArtist?.data?.popularity.toLocaleString()}</h1>
+                                <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">Popularity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative   lg:w-120 lg:min-h-[200px] bg-white rounded-lg overflow-hidden border">
+
                         <div className="absolute inset-0 ">
                             <Waves
                                 lineColor="white"
@@ -93,7 +95,9 @@ export default function TopArtist() {
                                 xGap={20}
                                 yGap={36}
                             />
+
                         </div>
+
                         <div className="relative overflow-hidden z-10 p-8 flex justify-between  w-full">
 
                             <div>
@@ -143,29 +147,30 @@ export default function TopArtist() {
                         </div>
                     </div>
 
-                    <ScrollArea className={""}>
-                        <div className={"flex justify-between w-full  py-4 "}>
-                            <div className={" select-none flex gap-2 place-items-center"}>
-                                <div className="p-2 bg-[#00311D] rounded-md"><ListMusicIcon color={"#85e0ba"}/></div>
-                                <h1 className="PlusJakartaSans-Bold text-lg lg:text-2xl">Albums</h1>
-                            </div>
 
-                        </div>
-                        <div className={"grid grid-cols-2 lg:grid-cols-4 gap-3"}>
-                            {album?.data?.items?.map((item: SpotifyApi.AlbumObjectSimplified, index: number) => {
-
-                                return (
-                                    <AlbumCard item={item} key={index}/>
-
-
-                                )
-                            })}
-                        </div>
-                    </ScrollArea>
                 </div>
+
             </div>
 
+            <ScrollArea className={""}>
+                <div className={"flex justify-between w-full  py-4 "}>
+                    <div className={" select-none flex gap-2 place-items-center"}>
+                        <div className="p-2 bg-[#00311D] rounded-md"><ListMusicIcon color={"#85e0ba"}/></div>
+                        <h1 className="PlusJakartaSans-Bold text-lg lg:text-2xl">Albums</h1>
+                    </div>
 
+                </div>
+                <div className={"grid grid-cols-2 lg:grid-cols-5 gap-3"}>
+                    {album?.data?.items?.map((item: SpotifyApi.AlbumObjectSimplified, index: number) => {
+
+                        return (
+                            <AlbumCard item={item} key={index}/>
+
+
+                        )
+                    })}
+                </div>
+            </ScrollArea>
         </section>
     );
 }
