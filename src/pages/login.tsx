@@ -11,20 +11,23 @@ function Login() {
     const {LoginWithEmailPassword,LoginForm,loadingLogin}=useAuth()
 
     return (
-        <section className={"h-[100dvh] w-full bg-[#191919]"}>
+        <section className={"h-[100dvh] bg-image w-full bg-[#191919]"}>
 
+            <div className="absolute inset-0 z-1 w-full h-full bg-gradient-to-l from-black/100 via-black/90 lg:to-transparent to-black/70" />
 
-            <div className={"grid h-full lg:grid-cols-2"}>
+            <div className={"grid h-full z-2 lg:grid-cols-2"}>
+                <div className={"hidden lg:flex h-full w-full "}>
 
-                <div className="p-5 lg:p-30 flex gap-4 flex-col justify-center">
+                </div>
+                <div className="p-5 lg:p-30  z-3 flex gap-4 flex-col justify-center">
 
                     <div className="w-full flex flex-col place-items-center">
                         <div className="pb-5">
                             <img alt="" className="h-10"
                                  src={logo}/>
                         </div>
-                        <h1 className={"text-3xl lg:text-4xl text-white lg:leading-13 PlusJakartaSans-Bold"}>Welcome Back</h1>
-                        <p className={"text-md text-center lg:px-0 px-4 lg:text-lg text-white PlusJakartaSans-Regular"}>Log in to continue enjoying your favorite tracks</p>
+                        <h1 className={"text-3xl lg:text-4xl text-white/80 lg:leading-13 PlusJakartaSans-Bold"}>Welcome Back</h1>
+                        <p className={"text-md text-center lg:px-0 px-4 lg:text-lg text-white/70 PlusJakartaSans-Regular"}>Log in to continue enjoying your favorite tracks</p>
                     </div>
                     <Form {...LoginForm}>
                         <form onSubmit={LoginForm.handleSubmit(LoginWithEmailPassword)} className="flex flex-col gap-4">
@@ -35,7 +38,7 @@ function Login() {
                                     <FormItem className={"w-full"}>
                                         <FormLabel className="PlusJakartaSans-Regular text-white/80">Email</FormLabel>
                                         <FormControl >
-                                            <Input   className={"text-white PlusJakartaSans-Regular  "} placeholder="shadcn" {...field} />
+                                            <Input   className={"text-white/80 PlusJakartaSans-Regular  "} placeholder="shadcn" {...field} />
                                         </FormControl>
 
                                         <FormMessage className={"text-[#df6d6d]"} />
@@ -50,14 +53,19 @@ function Login() {
                                         <FormLabel className="PlusJakartaSans-Regular text-white/80">Password</FormLabel>
 
                                         <FormControl >
-                                            <Input  className={"  text-white PlusJakartaSans-Regular"} placeholder="shadcn" {...field} />
+                                            <div className="relative ">
+
+                                                <Input type={"password"}   className={"  text-white/80 PlusJakartaSans-Regular"} placeholder="shadcn" {...field} />
+
+                                            </div>
+
                                         </FormControl>
 
                                         <FormMessage className={"text-[#df6d6d]"} />
                                     </FormItem>
                                 )}
                             />
-                            <button className={"bg-[#1DB954] flex place-items-center justify-center   h-[50px]  rounded-full PlusJakartaSans-Bold hover:bg-unset text-white text-shadow-lg"} type="submit">
+                             <button className={"bg-[#1DB954] flex place-items-center justify-center   h-[50px]  rounded-full PlusJakartaSans-Bold hover:bg-unset text-white text-shadow-lg"} type="submit">
                                 {loadingLogin ? <Loader className={"animate-spin"} size={23} color={"white"}/> :"Submit"}
                             </button>
                         </form>
@@ -66,9 +74,7 @@ function Login() {
                         <p className={"text-center text-sm text-white PlusJakartaSans-Regular"}>Don't Have an Account? <Link to={"/register"}><span className={"text-[#0e6] PlusJakartaSans-SemiBold underline"}>Register now</span></Link></p>
                     </div>
                 </div>
-                <div className={"hidden lg:flex h-full w-full bg-[#191919]"}>
 
-                </div>
             </div>
         </section>
     );

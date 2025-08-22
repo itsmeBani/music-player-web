@@ -23,9 +23,9 @@ function Register() {
 
 
     return (
-        <section className={"h-[100dvh] w-full bg-[#191919]"}>
-            <div className={"grid h-full lg:grid-cols-2"}>
-                <div className="p-5 lg:p-30 flex gap-4 flex-col justify-center">
+        <section className={"h-[100dvh] bg-image-concert flex w-full  bg-[#191919]"}>
+            <div className={"grid h-full lg:grid-cols-2 overflow-hidden"}>
+                <div className="p-5 z-3 lg:p-30 flex gap-4 flex-col justify-center">
                     <div className="w-full flex flex-col  place-items-center">
 
                         <div className="pb-5">
@@ -154,9 +154,11 @@ function Register() {
                         </p>
                     </div>
                 </div>
-                <div className={"h-full w-full hidden lg:flex "}>
 
-                </div>
+                <div className="absolute inset-0 z-1 w-full h-full bg-gradient-to-r from-black/100 via-black/90 lg:to-transparent to-black/70 " />
+
+                <div className="flex relative">
+                       </div>
             </div>
         </section>
     );

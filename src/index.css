@@ -218,3 +218,19 @@
     height: 0;
   }
 }
+
+.bg-image{
+  background-image: url("./assets/control.jpg");
+  background-position: center;
+  background-size: cover;
+
+  /*filter: grayscale(100%);*/
+}
+
+.bg-image-concert{
+  background-image: url("./assets/concert.jpg");
+  background-position: center;
+  background-size: cover;
+
+  /*filter: grayscale(100%);*/
+}
