@@ -62,11 +62,11 @@ function Devices() {
             <DropdownMenu >
                 <DropdownMenuTrigger>
 
-                      <div className={"w-full pt-2 group cursor-pointer hidden lg:flex justify-end place-items-center"}>
+                      <div className={"w-full pt-2 group cursor-pointer  justify-end place-items-center"}>
                         {activeDevice?.device &&
                             <div className={"h-full gap-3 flex    rounded-md"}>
-                                <Laptop2  className="group-hover:text-[#0e6]/80"/>
-                                <h1 className="text-start group-hover:text-[#0e6]/80 PlusJakartaSans-SemiBold text-xs text-white]">
+                                <Laptop2  className="group-hover:text-[#0e6]/80 lg:w-auto w-5"/>
+                                <h1 className="text-start hidden lg:block group-hover:text-[#0e6]/80 PlusJakartaSans-SemiBold text-xs text-white]">
                                     {activeDevice?.device?.name}
                                     <p className={"PlusJakartaSans-Regular leading-3 opacity-90 text-[10px]"}>Currently playing device</p>
                                 </h1>
