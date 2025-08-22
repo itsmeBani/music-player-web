@@ -86,7 +86,7 @@ export function NavMain({
                 ))}
 
 
-                {currentUser?.roles[0].toLowerCase() === "admin"
+                {currentUser?.roles.includes("Admin")
                     &&
                     <SidebarMenuItem>
                         <Link to={"/users"}>
