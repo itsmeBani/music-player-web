@@ -11,6 +11,7 @@ import {TopArtistsQuery} from "../../query/fetchArtists.ts";
 import {useQuery} from "@tanstack/react-query";
 import {Link} from "react-router";
 import RecentlyPlayed from "@/feature/RecentlyPlayed.tsx";
+import {formatFollowers} from "@/pages/topArtist.tsx";
 
 
 function Home() {
@@ -43,17 +44,17 @@ function Home() {
 
 
                                             <div className={"select-none absolute left-4 w-full  bottom-4 z-1"}>
-                                                <h1 className="lg:text-xl PlusJakartaSans-Bold">{item?.name}</h1>
+                                                <h1 className="lg:text-[16px] PlusJakartaSans-Bold pb-1">{item?.name}</h1>
 
 
                                                 <div className="flex place-items-center justify-between w-full">
                                                     <div className={"w-full"}>
-                                                        <h1 className=" text-sm lg:text-lg PlusJakartaSans-Bold">4.3M</h1>
-                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md  ">followers</p>
+                                                        <h1 className=" text-sm  text-white/70 lg:text-lg PlusJakartaSans-Bold">{formatFollowers(item?.followers?.total)}</h1>
+                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md text-white/80 ">followers</p>
                                                     </div>
                                                     <div className={"w-full"}>
-                                                        <h1 className="text-sm lg:text-lg PlusJakartaSans-Bold">67</h1>
-                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md ">Popularity</p>
+                                                        <h1 className="text-sm lg:text-lg PlusJakartaSans-Bold text-white/70">{item?.popularity.toLocaleString()}</h1>
+                                                        <p className="PlusJakartaSans-Regular text-xs lg:text-md text-white/80 ">Popularity</p>
                                                     </div>
                                                 </div>
                                             </div>

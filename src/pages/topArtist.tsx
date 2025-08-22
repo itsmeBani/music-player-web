@@ -17,7 +17,15 @@ import {ChevronLeft, ListMusicIcon, Loader, PlayIcon} from "lucide-react";
 import {Waves} from "@/components/ui/waves.tsx";
 import AlbumCard from "@/components/AlbumCard.tsx";
 import {ScrollArea} from "@/components/ui/scroll-area.tsx";
-
+export function formatFollowers(followersCount: number) {
+    if (followersCount >= 1000000) {
+        return (followersCount / 1000000).toFixed(1) + 'M';
+    } else if (followersCount >= 1000) {
+        return (followersCount / 1000).toFixed(1) + 'k';
+    } else {
+        return followersCount.toString();
+    }
+}
 
 export default function TopArtist() {
     const {artistID} = useParams();
@@ -31,15 +39,7 @@ export default function TopArtist() {
         ]
     })
 
-    function formatFollowers(followersCount: number) {
-        if (followersCount >= 1000000) {
-            return (followersCount / 1000000).toFixed(1) + 'M';
-        } else if (followersCount >= 1000) {
-            return (followersCount / 1000).toFixed(1) + 'k';
-        } else {
-            return followersCount.toString();
-        }
-    }
+
 
     const [currentArtist, album, topTracks] = response
 
@@ -68,11 +68,11 @@ export default function TopArtist() {
                          <div>
 
                              <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {formatFollowers(currentArtist?.data?.followers?.total)}</h1>
-                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-lg">followers</p>
+                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">followers</p>
                          </div>
                          <div>
                              <h1 className="PlusJakartaSans-Bold text-sm lg:text-xl"> {currentArtist?.data?.popularity.toLocaleString()}</h1>
-                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-lg">Popularity</p>
+                             <p className="PlusJakartaSans-Regular leading-5 text-xs lg:text-[14px]">Popularity</p>
                          </div>
                      </div>
                     </div>
