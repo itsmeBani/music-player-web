@@ -40,7 +40,6 @@ interface UserColumnsProps {
 }
 
 export function UserColumns({DeleteUser}: UserColumnsProps) {
-
     const columns: ColumnDef<User>[] = [
         {
             id: "select",
@@ -122,9 +121,9 @@ export function UserColumns({DeleteUser}: UserColumnsProps) {
             cell: ({row}) => (
                 <Popover>
                     <PopoverTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className={"hover:bg-unset text-white"}>
                             <span className="sr-only">Open menu</span>
-                            <MoreHorizontal/>
+                            <MoreHorizontal color={"white"} />
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="">
@@ -134,10 +133,10 @@ export function UserColumns({DeleteUser}: UserColumnsProps) {
                                 This action cannot be undone
                             </p>
                         </div>
-                        <Button onClick={() => DeleteUser(row?.original.id)}
-
-                                className="flex text-red-400 hover:text-white bg-unset border-red-400 border place-items-center justify-center w-full"
-                                variant="destructive"
+                        <Button
+                            onClick={() => DeleteUser(row?.original.id)}
+                            className="flex text-red-400 hover:text-white bg-unset border-red-400 border place-items-center justify-center w-full"
+                            variant="destructive"
                         >
                             <Trash2Icon className="h-4 w-4 mr-2"/>
                             Delete user
@@ -158,17 +157,13 @@ export type User = {
     emailConfirmed: boolean
 }
 
-
 export default function ManageUsers() {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const { mutate: deleteUser } = useDeleteUser();
 
-
-    const [columnVisibility, setColumnVisibility] =
-        React.useState<VisibilityState>({})
+    const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
-
 
     const DeleteUser = (id: string) => {
         deleteUser(id)
@@ -207,6 +202,25 @@ export default function ManageUsers() {
                     }
                     className="max-w-sm"
                 />
+                {table.getFilteredSelectedRowModel().rows.length > 0 && (
+                    <Button
+                        variant="outline"
+                        className="text-red-500 hover:bg-unset hover:text-red-600 border-red-600 "
+                        onClick={() => {
+                            const selectedIds = table
+                                .getFilteredSelectedRowModel()
+                                .rows.map((row) => row.original.id)
+
+                            selectedIds.forEach((id) => DeleteUser(id))
+
+                            setRowSelection({})
+                        }}
+                    >
+                        <Trash2Icon className="h-4 w-4 " />
+                        Delete {table.getFilteredSelectedRowModel().rows.length > 1 ? "Records" :"Record" }
+                    </Button>
+                )}
+
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">
@@ -252,7 +266,7 @@ export default function ManageUsers() {
                     </TableHeader>
                     <TableBody>
                         {isLoading ? (
-                            <TableRow className={""}>
+                            <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
                                     Loading...
                                 </TableCell>
@@ -283,12 +297,19 @@ export default function ManageUsers() {
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex items-center justify-end space-x-2 py-4">
+
+            {/* Footer with Delete Selected + Pagination */}
+            <div className="flex items-center justify-between py-4">
                 <div className="text-muted-foreground flex-1 text-sm">
                     {table.getFilteredSelectedRowModel().rows.length} of{" "}
                     {table.getFilteredRowModel().rows.length} row(s) selected.
+
                 </div>
-                <div className="space-x-2">
+
+                <div className="flex space-x-2">
+
+
+
                     <Button
                         variant="outline"
                         size="sm"

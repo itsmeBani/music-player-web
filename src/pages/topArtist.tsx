@@ -106,35 +106,37 @@ export default function TopArtist() {
                                 <Drawer direction={"right"}>
                                     <DrawerTrigger><PlayIcon size={50} fill={"#212121"}
                                                              className={"bg-white rounded-full cursor-pointer p-2"}/></DrawerTrigger>
-                                    <DrawerContent className={"lg:min-w-xl min-w-l  overflow-auto"}>
+                                    <DrawerContent className={"lg:min-w-xl min-w-l overflow-y-scroll"}>
                                         <DrawerHeader className={"pb-0"}>
                                             <DrawerTitle>Top Tracks</DrawerTitle>
                                             <DrawerDescription>The most popular and trending songs by this
                                                 artist</DrawerDescription>
                                         </DrawerHeader>
 
-                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-5 pb-100 ">
-                                            {topTracks?.data?.tracks.map((item: SpotifyApi.TrackObjectFull, index: number) => {
-                                                return (
-                                                    <TrackCard key={index}
-                                                               item={item} isDisplayMenu={false}
-                                                               onMenuCLick={() => {
-                                                               }}
-                                                               onPlay={() => {
-                                                                   Play.mutate({
-                                                                       contextUri: item?.uri,
-                                                                       progress_ms: 0,
+                                      <div>
+                                          <div className="grid grid-cols-1  lg:grid-cols-3 gap-3 p-5 pb-100 ">
+                                              {topTracks?.data?.tracks.map((item: SpotifyApi.TrackObjectFull, index: number) => {
+                                                  return (
+                                                      <TrackCard key={index}
+                                                                 item={item} isDisplayMenu={false}
+                                                                 onMenuCLick={() => {
+                                                                 }}
+                                                                 onPlay={() => {
+                                                                     Play.mutate({
+                                                                         contextUri: item?.uri,
+                                                                         progress_ms: 0,
 
-                                                                   });
-                                                               }}
-                                                               artist={item?.artists?.[0]?.name}
-                                                               songName={item?.name}
-                                                               albumImage={item?.album?.images?.[0]?.url}
-                                                    />
-                                                )
-                                            })}
-                                        </div>
+                                                                     });
+                                                                 }}
+                                                                 artist={item?.artists?.[0]?.name}
+                                                                 songName={item?.name}
+                                                                 albumImage={item?.album?.images?.[0]?.url}
+                                                      />
+                                                  )
+                                              })}
+                                          </div>
 
+                                      </div>
                                     </DrawerContent>
                                 </Drawer>
                             </div>

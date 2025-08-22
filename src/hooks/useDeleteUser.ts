@@ -8,7 +8,7 @@ import {BACK_END_API_KEY, BACKEND_AUTH_BASE_URL} from "../../constant.ts";
 const deleteUser = async (id: string) => {
     const user_token = localStorage.getItem("user_token");
     const response = await axios.delete(
-        `${BACKEND_AUTH_BASE_URL}/api/Users/DeleteUsers/${id}`,
+        `${BACKEND_AUTH_BASE_URL}/api/Users/DeleteUser/${id}`,
         {
             headers: {
                 Authorization: `Bearer ${user_token}`,
@@ -28,6 +28,7 @@ export const useDeleteUser = () => {
         mutationFn: deleteUser,
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ["USERS"]}).then();
+            toast.success("Successfully Deleted")
         },
         onError: (error) => {
             console.log(error)

@@ -8,7 +8,7 @@ export const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as strin
 
 
 
-export const REDIRECT_URL_LOGIN = "https://music-player-web-sigma.vercel.app/login";
+ export const REDIRECT_URL_LOGIN = "https://music-player-web-sigma.vercel.app/login";
 
 
 
