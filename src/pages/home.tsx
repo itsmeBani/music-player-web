@@ -18,7 +18,7 @@ function Home() {
     const {data} = useQuery(TopArtistsQuery());
     console.log(data)
     return (
-        <section className="flex  pb-30 flex-col gap-5 ">
+        <section className="flex    pb-30 flex-col  gap-5 ">
 
             <div>
 
@@ -28,7 +28,7 @@ function Home() {
                 </div>
 
             </div>
-            <Carousel className="w-full ">
+            <Carousel className="w-full overflow-visible">
                 <CarouselContent className="-ml-1">
                     {data?.items?.map((item:SpotifyApi.ArtistObjectFull, index: number) => (
                         <CarouselItem key={index} className="pl-1 ">

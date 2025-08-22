@@ -22,7 +22,7 @@ function PlaylistCard({item}:PlaylistCardProps) {
                </Avatar>
 
                <div>
-                   <h1 className={"PlusJakartaSans-Bold text-white/80 text-sm text-nowrap truncate pt-2"}> {item?.name}</h1>
+                   <h1 className={"PlusJakartaSans-Bold text-white/80 text-xs text-nowrap truncate pt-2"}> {item?.name}</h1>
                    <p className={"PlusJakartaSans-Regular text-xs leading-4"}>Songs</p>
                    <p className={"PlusJakartaSans-Bold text-md"}>{item?.tracks.total}</p>
                </div>

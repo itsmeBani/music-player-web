@@ -42,7 +42,7 @@ function PlaylistTracks() {
             </div>
 
             {playlistTrack?.isPending && <div className={"w-full flex justify-center"}><Loader className={"animate-spin"}/></div>}
-           <div className={"grid grid-cols-2 lg:grid-cols-6 pb-100  gap-2 lg:gap-4"}>
+           <div className={"grid grid-cols-1 lg:grid-cols-6 pb-100  gap-2 lg:gap-4"}>
                {filteredTracks?.map((item: {track :SpotifyApi.TrackObjectFull, uri : string},index:number)=>{
                    return <TrackCard key={index}
 

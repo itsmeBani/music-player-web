@@ -3,9 +3,9 @@ import {Navigate} from "react-router";
 import HEADPHONE from "../assets/headphone-image.png"
 function GetStarted() {
     const {loginWithSpotify}=useAuth()
-     const {token} =useAuth()
+    const {token} =useAuth()
 
-     if (token) return  <Navigate to={"/login"} replace={true} />
+    if (token) return  <Navigate to={"/login"} replace={true} />
 
 
 
@@ -23,7 +23,7 @@ function GetStarted() {
                 <div className="bg-black/65 absolute w-full h-full"/>
                 <div className={"p-5 lg:p-0 flex place-items-center h-full justify-center w-full lg:w-auto "}>
 
-                        <img src={HEADPHONE} className={"lg:absolute lg:rotate-40 -z-1 top-10  right-10 h-[70%] lg:h-[80%]"}/>
+                    <img src={HEADPHONE} className={"lg:absolute lg:rotate-40 -z-1 top-10  right-10 h-[70%] lg:h-[80%]"}/>
 
                 </div>
             </div>

@@ -79,7 +79,7 @@ export default function TopArtist() {
                 </div>
                 <div className="flex flex-col lg:h-full">
                     <div className="relative   lg:w-130 lg:min-h-[200px] bg-white rounded-lg overflow-hidden border">
-                        <div className="absolute inset-0">
+                        <div className="absolute inset-0 ">
                             <Waves
                                 lineColor="white"
                                 backgroundColor="#1E40AF"
@@ -113,7 +113,7 @@ export default function TopArtist() {
                                                 artist</DrawerDescription>
                                         </DrawerHeader>
 
-                                        <div className="grid grid-cols-3 gap-3 p-5 pb-100 ">
+                                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-5 pb-100 ">
                                             {topTracks?.data?.tracks.map((item: SpotifyApi.TrackObjectFull, index: number) => {
                                                 return (
                                                     <TrackCard key={index}

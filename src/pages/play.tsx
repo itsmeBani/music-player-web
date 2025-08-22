@@ -27,7 +27,7 @@ function Play() {
             </div>
                  </div>
             {isPending && <div className={"w-full flex justify-center"}><Loader className={"animate-spin"}/></div>}
-            <div className={"gap-2 lg:gap-5 grid pb-50 grid-cols-2 lg:grid-cols-6 w-full"}>
+            <div className={"gap-2 lg:gap-5 grid pb-50 grid-cols-1 lg:grid-cols-6 w-full"}>
                 {data?.tracks?.items.map((item: SpotifyApi.TrackObjectFull) => {
                         return (
                             <TrackCard  item={item}

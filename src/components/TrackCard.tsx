@@ -51,18 +51,20 @@ function TrackCard<TData extends {uri :string}>({item, onPlay, songName, artist,
 
     return (
         <div className={"group select-none  relative overflow-hidden "}>
-            <div onClick={onPlay}>
+            <div onClick={onPlay} className={"flex lg:block gap-2 lg:place-items-start place-items-center"}>
                 <div
                     className={"overflow-hidden group-hover:border-2 border-[#0e6] rounded-md bg-[#292929] aspect-square "}>
-                    <img src={albumImage} className={" transform transition-transform  hover:scale-130 mb-2  "}/>
+                    <img src={albumImage} className={"lg:w-auto w-15 transform transition-transform  hover:scale-130 mb-2  "}/>
 
                 </div>
-                <p className="truncate w-30 pt-2 text-sm lg:text-[13px] PlusJakartaSans-SemiBold">{songName}</p>
-                <p className={"truncate w-30  text-xs lg:text-[14px] text-white/70 PlusJakartaSans-Regular"}>Song• {artist}</p>
+               <div>
+                   <p className="truncate w-30 pt-2 text-sm lg:text-[13px] PlusJakartaSans-SemiBold">{songName}</p>
+                   <p className={"truncate w-30  text-xs lg:text-[14px] text-white/70 PlusJakartaSans-Regular"}>Song• {artist}</p>
 
+               </div>
             </div>
 
-            <div className={"lg:opacity-0 lg:group-hover:opacity-100 absolute -bottom-0 -right-1 lg:-right-2"}>
+            <div className={"lg:opacity-0 lg:group-hover:opacity-100 absolute lg:-bottom-0 bottom-3 -right-1 lg:-right-2"}>
                 {isDisplayMenu &&
                     <DropdownMenu >
                         <DropdownMenuTrigger className={" "}> <EllipsisVertical/></DropdownMenuTrigger>
@@ -101,17 +103,17 @@ function TrackCard<TData extends {uri :string}>({item, onPlay, songName, artist,
                                 <p className={"PlusJakartaSans-Bold text-[14px] pb-3"}>Add to Playlist</p>
 
 
-                                <ScrollArea className="w-full h-[240px] pb-3 px-3 rounded-md ">
-                                    <div className={"grid grid-cols-3 lg:grid-cols-4 gap-2 "}>
+                                <ScrollArea className="w-full h-[240px] pb-3 lg:px-3 rounded-md ">
+                                    <div className={"grid grid-cols-1 lg:grid-cols-4  gap-2 "}>
                                         {playlistData?.items?.map((item: PlaylistBaseObject, index: number) => {
                                                 return (
-                                                    <div  key={index} onClick={()=>setSelectedPlaylistId(item?.id)}>
+                                                    <div className={"flex lg:flex-col gap-2 place-items-center"}   key={index} onClick={()=>setSelectedPlaylistId(item?.id)}>
                                                         <div style={{ borderColor:item?.id === selectedPlaylistId ?"#0e6" : "transparent",
                                                             borderWidth:item?.id === selectedPlaylistId ?2 : 0,}}
-                                                            className={"aspect-square flex  justify-center place-items-center overflow-hidden rounded-md bg-[#292929]"}>
+                                                            className={"aspect-square lg:w-auto w-10 flex  justify-center place-items-center overflow-hidden rounded-md bg-[#292929]"}>
 
                                                             <Avatar className="rounded-md w-20 h-full flex ">
-                                                                <AvatarImage src={item?.images?.[0].url} />
+                                                                <AvatarImage src={item?.images?.[0].url} className={"object-cover"} />
                                                                 <AvatarFallback className="rounded-md"><Music/></AvatarFallback>
                                                             </Avatar>
                                                         </div>

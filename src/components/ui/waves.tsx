@@ -336,7 +336,7 @@ export function Waves({
         >
             <div
                 className={cn(
-                    "absolute top-0 left-0 rounded-full animate-wave-pulse",
+                    "absolute top-0   left-0 rounded-full animate-wave-pulse",
                     "w-2 h-2 bg-foreground/10",
                 )}
                 style={{

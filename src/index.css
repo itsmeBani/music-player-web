@@ -212,7 +212,7 @@
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   ::-webkit-scrollbar {
     width: 0;
     height: 0;
