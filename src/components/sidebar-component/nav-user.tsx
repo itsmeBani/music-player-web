@@ -40,7 +40,7 @@ export function NavUser({
     }
 }) {
     const {isMobile} = useSidebar()
-    const {logout, currentUser} = useAuth()
+    const {logout, currentUser,VerifyEmail} = useAuth()
   const {data} = useQuery(fetchCurrentSpotifyUser());
 
   return (
@@ -89,9 +89,9 @@ export function NavUser({
                                 <Verified color="#0e6" /> Verified
                               </div>
                           ) : (
-                              <div className="flex items-center py-1.5 rounded-md px-2 gap-2 text-red-600/80 border border-red-600 bg-red-600/10">
-                                <AlertCircle color="red" /> Unverified
-                              </div>
+                              <button onClick={VerifyEmail}  className="w-full cursor-pointer flex items-center py-1.5 rounded-md px-2 gap-2 text-blue-600/90 border border-blue-600 bg-blue-600/10">
+                                <AlertCircle className={"text-blue-600"} /> Verify
+                              </button>
                           )}
 
                         </DropdownMenuGroup>

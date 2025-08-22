@@ -98,6 +98,11 @@ export function UserColumns({DeleteUser}: UserColumnsProps) {
             ),
         },
         {
+            accessorKey: "roles",
+            header: () => <p className="PlusJakartaSans-Bold">Roles</p>,
+            cell: ({row}) =>  row.original.roles.map((role:string)=> <Badge variant="outline" className={"mr-1 border-[#0e6]/30 text-green-800"}>{role}</Badge>)
+        },
+        {
             accessorKey: "emailConfirmed",
             header: () => <p className="PlusJakartaSans-Bold">Verified</p>,
             cell: ({row}) => {
@@ -110,7 +115,7 @@ export function UserColumns({DeleteUser}: UserColumnsProps) {
                         Verified
                     </Badge>
                 ) : (
-                    <Badge variant="destructive">Unverified</Badge>
+                    <Badge variant="outline" className={"border-red-600/50 py-1 text-red-500/60"}>Unverified</Badge>
                 )
             },
         },
@@ -155,6 +160,7 @@ export type User = {
     userName: string
     email: string
     emailConfirmed: boolean
+    roles:string[]
 }
 
 export default function ManageUsers() {

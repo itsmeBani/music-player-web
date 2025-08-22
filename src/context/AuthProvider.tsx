@@ -19,6 +19,7 @@ interface AuthContextType {
     RegisterForm: UseFormReturn<{ username: string, email: string; password: string; confirmPassword: string }>
     loadingRegister: boolean;
     loadingLogin: boolean;
+    VerifyEmail: () => void;
 
 }
 
@@ -170,7 +171,27 @@ export const AuthProvider = ({children}: { children: ReactNode }) => {
             setLoadingRegister(false)
         }
     };
+    const VerifyEmail=async ()=>{
+        if (!currentUser?.id) {
+            toast.error("Can't Verify Email");
+            return;
+        }
 
+        toast.promise(
+            axios.post(`${BACKEND_AUTH_BASE_URL}/api/account/SendAuthEmail`, {
+                UserId: currentUser?.id,
+                ClientUri: `${BACKEND_AUTH_BASE_URL}/confirmEmail`,
+            }),
+            {
+                loading: "Sending verification link...",
+                success: () => `Link sent to ${currentUser?.email}`,
+                error: (err) =>
+                    err?.response?.data?.message ||
+                    "Failed to send verification link. Try again.",
+            }
+        );
+
+    }
     useEffect(() => {
         getSession()
          getCurrentUserRole().then()
@@ -182,7 +203,7 @@ export const AuthProvider = ({children}: { children: ReactNode }) => {
             token,
             logout,
             loadingLogin,loadingRegister,
-            LoginWithEmailPassword, RegisterUser, LoginForm, RegisterForm
+            LoginWithEmailPassword, RegisterUser, LoginForm, RegisterForm,VerifyEmail
         }}>
             {children}
         </AuthContext.Provider>
