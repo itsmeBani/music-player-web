@@ -1,4 +1,4 @@
-import {Award, Clock} from "lucide-react";
+import {Award, Clock, Loader} from "lucide-react";
 
 import {Card} from "@/components/ui/card"
 import {
@@ -16,11 +16,11 @@ import {formatFollowers} from "@/pages/topArtist.tsx";
 
 function Home() {
 
-    const {data} = useQuery(TopArtistsQuery());
-    console.log(data)
+    const {data,isPending} = useQuery(TopArtistsQuery());
+
     return (
         <section className="flex    pb-30 flex-col  gap-5 ">
-
+            {isPending && <div className={"w-full flex justify-center"}><Loader className={"animate-spin"}/></div>}
             <div>
 
                 <div className={"select-none flex gap-2 place-items-center"}>
