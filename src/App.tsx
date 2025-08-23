@@ -18,6 +18,7 @@ import TopArtist from "@/pages/topArtist.tsx";
 import ArtistAlbum from "@/pages/ArtistAlbum.tsx";
 import ManageUsers from "@/pages/ManageUsers.tsx";
 import NotFoundPage from "@/pages/NotFoundPage.tsx";
+import EmailConfirmation from "@/pages/EmailConfirmation.tsx";
 
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
                 {
                     path: "/play",
                     element: <Play/>,
-                }, {
+                },
+                {
                     path: "/library",
                     element: <LibraryLayout/>,
                     children: [
@@ -79,7 +81,10 @@ function App() {
             path: "/getStarted",
             element: <GetStarted/>,
             errorElement:<NotFoundPage/>,
-        }
+        }, {
+            path: "/account/confirmEmail",
+            element: <EmailConfirmation/>,
+        },
     ])
 
     const queryCLient = new QueryClient()

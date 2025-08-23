@@ -10,7 +10,7 @@ import {usePlayBack} from "@/hooks/usePlayBack.ts";
 
 function Play() {
 
-    const [searchTrack, setSearchTrack] = useState("Arthur Nery")
+    const [searchTrack, setSearchTrack] = useState(" ")
     const {Play}=usePlayBack()
     const debouncedSearchTerm = useDebounce(searchTrack, 600);
     const {data ,isPending} = useQuery(SearchTracks(debouncedSearchTerm))

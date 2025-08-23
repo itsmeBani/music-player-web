@@ -3,7 +3,7 @@ import {supabase} from "@/services/supabase-config.ts";
 import {z} from "zod";
 import {toast} from "sonner";
 import axios, {AxiosError} from "axios";
-import {BACKEND_AUTH_BASE_URL, REDIRECT_URL_LOGIN} from "../../constant.ts";
+import {BACKEND_AUTH_BASE_URL, REDIRECT_URL_LOGIN, WEB_BASE_URL} from "../../constant.ts";
 import {loginSchema, registerSchema} from "../../form_schemas.ts";
 import {useForm, UseFormReturn} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -181,7 +181,7 @@ export const AuthProvider = ({children}: { children: ReactNode }) => {
         toast.promise(
             axios.post(`${BACKEND_AUTH_BASE_URL}/api/account/SendAuthEmail`, {
                 UserId: currentUser?.id,
-                ClientUri: `${BACKEND_AUTH_BASE_URL}/confirmEmail`,
+                ClientUri: `${WEB_BASE_URL}/account/confirmEmail`,
             }),
             {
                 loading: "Sending verification link...",
