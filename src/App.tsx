@@ -17,6 +17,7 @@ import PlaylistTracks from "@/pages/PlaylistTracks.tsx";
 import TopArtist from "@/pages/topArtist.tsx";
 import ArtistAlbum from "@/pages/ArtistAlbum.tsx";
 import ManageUsers from "@/pages/ManageUsers.tsx";
+import NotFoundPage from "@/pages/NotFoundPage.tsx";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         {
             path: "/",
             element: <ProtectedComponent><RootLayout/></ProtectedComponent>,
+            errorElement:<NotFoundPage/>,
             children: [
                 {
                     path: "/",
@@ -67,13 +69,16 @@ function App() {
         {
             path: "/login",
             element: <PublicComponent><Login/></PublicComponent>,
+            errorElement:<NotFoundPage/>,
         },
         {
             path: "/register",
-            element: <PublicComponent><Register/></PublicComponent>
+            element: <PublicComponent><Register/></PublicComponent>,
+            errorElement:<NotFoundPage/>,
         }, {
             path: "/getStarted",
-            element: <GetStarted/>
+            element: <GetStarted/>,
+            errorElement:<NotFoundPage/>,
         }
     ])
 

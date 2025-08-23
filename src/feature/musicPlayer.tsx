@@ -103,6 +103,8 @@ function MusicPlayer() {
 
 
 
+
+
     return (
         <div className="absolute  bg-[#006239] py-2 px-2 lg:p-2 lg:px-3 w-full left-0 bottom-0 border-[#00e673] border-t-1 rounded-t-lg">
             <div className="flex gap-2 justify-between">

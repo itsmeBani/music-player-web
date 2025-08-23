@@ -22,6 +22,8 @@ export function useSpotifyPlayer(token: string | null | undefined) {
     });
 
 
+
+
     useEffect(() => {
         if (!token) return;
 
@@ -94,9 +96,22 @@ export function useSpotifyPlayer(token: string | null | undefined) {
             console.log('Error playing track:', err)
         },
     });
+    const Disconnect = async () => {
+
+        try {
+            await player?.pause();
+            player?.disconnect();
+            setPlayer(null);
+            setDeviceId(null);
+            setIsReady(false)
+        } catch (err) {
+            console.error("Error disconnecting:", err);
+        }
+    };
 
 
-    return { player,Play, deviceId, isReady,listOfDevices,refetchDevices };
+
+    return { player,Play, deviceId, isReady,listOfDevices,refetchDevices,Disconnect };
 }
 
 

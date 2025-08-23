@@ -29,6 +29,7 @@ import {
 import {useAuth} from "@/context/AuthProvider.tsx";
 import {useQuery} from "@tanstack/react-query";
 import {fetchCurrentSpotifyUser} from "../../../query/fetchUser.ts";
+import {useSpotifyPlayer} from "@/hooks/useSpotifyPlayer.ts";
 
 export function NavUser({
                             user,
@@ -40,8 +41,15 @@ export function NavUser({
     }
 }) {
     const {isMobile} = useSidebar()
-    const {logout, currentUser,VerifyEmail} = useAuth()
+    const {logout, currentUser,VerifyEmail,token} = useAuth()
   const {data} = useQuery(fetchCurrentSpotifyUser());
+    const {Disconnect}=useSpotifyPlayer(token)
+
+
+    const Logout=async ()=>{
+        logout()
+       await Disconnect()
+    }
 
   return (
         <SidebarMenu>
@@ -98,7 +106,7 @@ export function NavUser({
                         <DropdownMenuSeparator/>
 
                         <DropdownMenuSeparator/>
-                        <DropdownMenuItem variant={"destructive"} onClick={logout}>
+                        <DropdownMenuItem variant={"destructive"} onClick={Logout}>
                             <LogOut/>
                             Log out
                         </DropdownMenuItem>

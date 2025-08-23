@@ -34,6 +34,8 @@ import {fetchUsers} from "../../query/fetchUsers.ts"
 import {Badge} from "@/components/ui/badge.tsx"
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover.tsx"
 import {useDeleteUser} from "@/hooks/useDeleteUser.ts";
+import {useAuth} from "@/context/AuthProvider.tsx";
+import {Navigate} from "react-router";
 
 interface UserColumnsProps {
     DeleteUser: (id: string) => void
@@ -167,7 +169,7 @@ export default function ManageUsers() {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const { mutate: deleteUser } = useDeleteUser();
-
+   const {currentUser}=useAuth()
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
 
@@ -197,6 +199,8 @@ export default function ManageUsers() {
         },
     })
 
+
+  if(!currentUser?.roles.includes("Admin"))  return  <Navigate to={"/"}/>
     return (
         <div className="w-full">
             <div className="flex items-center py-4 gap-2 ">

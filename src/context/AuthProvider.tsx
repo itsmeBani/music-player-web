@@ -8,6 +8,7 @@ import {loginSchema, registerSchema} from "../../form_schemas.ts";
 import {useForm, UseFormReturn} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 
+
 interface AuthContextType {
     currentUser: User | null | undefined
     loginWithSpotify: () => void;
@@ -102,7 +103,7 @@ export const AuthProvider = ({children}: { children: ReactNode }) => {
     const logout = async () => {
         const {error} = await supabase.auth.signOut()
         if (!error) {
-            console.log("lohouy")
+
             setToken(null)
             setCurrentUser(null)
             localStorage.removeItem("user_token")
